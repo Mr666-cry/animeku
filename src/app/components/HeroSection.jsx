@@ -17,9 +17,14 @@ const HeroSection = () => {
       bg-gradient-to-b from-[#2E2F40] to-[#1A1A29] 
       order-2 lg:order-1">
 
-          <h1 className="text-2xl lg:text-4xl font-bold text-white mb-3 lg:mb-4 relative z-20">
-            AquNime
-          </h1>
+          <h1 className="text-2xl lg:text-4xl font-bold mb-3 lg:mb-4 relative z-20">
+  <span className="text-red-500 drop-shadow-[0_0_15px_rgba(255,0,0,1)] transition-all duration-300 hover:brightness-125">
+    Aqu
+  </span>
+  <span className="text-blue-400 drop-shadow-[0_0_12px_rgba(0,100,255,0.7)] transition-all duration-300 hover:brightness-110">
+    Nime
+  </span>
+</h1>
           <p className="text-neutral-400 mb-4 lg:mb-6 text-sm lg:text-base relative z-20">
             AquNime adalah situs anime gratis tanpa iklan untuk menonton anime gratis
           </p>
