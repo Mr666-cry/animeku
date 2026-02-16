@@ -13,7 +13,7 @@
   });
 
   export const metadata = {
-    title: "JujuOtaku",
+    title: "AquNime",
     description: "Web Steraming Anime Sub Indo",
   };
 
