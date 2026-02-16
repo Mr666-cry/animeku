@@ -1,37 +1,51 @@
-"use client";
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 
-import Link from "next/link";
+const AnimeCard = ({ title, image, slug, episode, statusOrDay, type, priority = false }) => {
 
-export default function AnimeCard({ anime }) {
-  return (
-    <Link
-      href={`/detail/${anime.slug}`}
-      className="group block"
-    >
-      <div className="relative rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-        
-        {/* Gambar */}
-        <img
-          src={anime.image}
-          alt={anime.title}
-          className="w-full h-64 object-cover"
-        />
+  return (
+    <Link
+      href={`/detail/${slug}`}
+      className="group will-change-transform"
+    >
+      <div className="flex flex-col h-full">
 
-        {/* Overlay episode */}
-        <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-md px-4 py-1 rounded-full text-white text-sm">
-          Eps {anime.episode}
-        </div>
+        <div className="relative aspect-[2/3] w-full overflow-hidden rounded-lg">
+          <Image
+            src={image} 
+            alt={title}
+            unoptimized={true}
+            fill
+            priority={priority}
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105 bg-neutral-700"
+          />
+          {type && (
+            <div className="absolute top-2 right-2 z-10 rounded-md bg-pink-600/80 px-2 py-1 text-xs font-bold text-white">
+              <span>{type}</span>
+            </div>
+          )}
+          {episode && (
+            <div className="absolute bottom-2 left-2 z-10 rounded-full bg-black/60 px-2.5 py-1 text-xs font-semibold text-white">
+              {episode.replace('Episode ', 'Eps ')}
+            </div>
+          )}
+        </div>
 
-        {/* Label TV */}
-        <div className="absolute top-3 right-3 bg-pink-600 px-4 py-1 rounded-full text-white text-sm font-semibold shadow-md">
-          TV
-        </div>
-      </div>
-
-      {/* Title */}
-      <h2 className="mt-3 text-white text-lg font-semibold text-center group-hover:text-pink-400 transition-colors duration-300">
-        {anime.title}
-      </h2>
-    </Link>
-  );
+        <div className="mt-2 px-1">
+          <h3 className="font-semibold text-sm text-white line-clamp-2 group-hover:text-pink-400 transition-colors">
+            {title}
+          </h3>
+          {statusOrDay && (
+            <div className="mt-1 flex items-center gap-1.5 text-xs text-neutral-400">
+              <span>{statusOrDay.replace('✓', '')}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </Link>
+  )
 }
+
+export default AnimeCard;
